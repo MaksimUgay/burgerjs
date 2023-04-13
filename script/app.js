@@ -151,7 +151,7 @@ let nav = document.querySelector('.wrapper__nav');
 
 function titleAdd() {
     titleCount.innerHTML++;
-    let rek = setTimeout(() => titleAdd(),30);
+    let rek = setTimeout(() => titleAdd(),40);
     if(titleCount.innerHTML == 100) {
         clearTimeout(rek);
         titleCount.innerHTML = `${titleCount.innerHTML} lvl`;
@@ -159,7 +159,20 @@ function titleAdd() {
         titleCount.style.fontSize = '100px';
         body.style.background = '#c0d3d6';
         nav.style.background = '#a7342e';
+    } else if (titleCount.innerHTML < 100) {
+        setColor(titleCount);
     }
+}
+
+let colors = ['red', 'green','blue','yellow','orange', 'black', 'gray'];
+
+function randomColor() {
+    let index = Math.floor(Math.random() * colors.length);
+    return colors[index]; 
+}
+
+function setColor(el) {
+    el.style.color = randomColor();
 }
 
 titleAdd();
